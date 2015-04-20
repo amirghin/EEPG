@@ -112,3 +112,10 @@ insert into pacientes (pacientes_id, pacientes_nombre, pacientes_apellidos, paci
 pacientes_fecha, pacientes_fecha_nac, pacientes_talla, pacientes_peso_meta, pacientes_circ_muneca, 
 pacientes_ant_personales,pacientes_padec_familiares, usuarios_nombre) values (1, 'fabiola', 'mayorga',
 'f', '27/04/2105', '01/04/1991', 2, 3,5, 'pribea', 'prueba', 'test');
+
+insert into pacientes (pacientes_id, pacientes_nombre, pacientes_apellidos, pacientes_genero, 
+pacientes_fecha, pacientes_fecha_nac, pacientes_talla, pacientes_peso_meta, pacientes_circ_muneca, 
+pacientes_ant_personales,pacientes_padec_familiares, usuarios_nombre) values (1, 'luis', 'mayorga',
+'f', '27/04/2105', '01/04/1991', 2, 3,5, 'pribesjfkksha', 'prusdhgkjsfeba', 'test');
+
+select * from pacientes;

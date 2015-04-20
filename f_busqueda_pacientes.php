@@ -17,7 +17,7 @@
 			<fieldset class="Pacientes">
 				<table>
 			    	<tr>
-				    	<td><label for="lblId">ID Paciente: </label></td>
+				    	<td><label for="lblId">Nombre Paciente: </label></td>
 				    	<td><input type="text" name="id_paciente"></td>
 			    	</tr>
 			    	<tr>
