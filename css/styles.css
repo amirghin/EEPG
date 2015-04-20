@@ -108,3 +108,27 @@ body{
 .nav-tabs a{
 	color: #000;
 }
+
+.busqueda_pacientes{
+	width: 90%;
+}
+
+.Pacientes{
+  width: 40%;
+  margin: 0 auto;
+}
+
+/***** #results *****/
+
+#result{
+	text-align: center;
+	border: 1px solid #000;
+	font-size: 12px;
+}
+
+#result input[type=button]{
+	width: 73px;
+}
+
+
+

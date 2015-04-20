@@ -11,8 +11,7 @@
 </head>
 
 <body>
-	<section class="Formulario">
-		<form method="POST" enctype="multipart/form-data" action="">
+	<section class="Formulario busqueda_pacientes">
 			<h1>Formulario de Pacientes</h1>	
 			<fieldset class="Pacientes">
 				<table>
@@ -27,7 +26,9 @@
 			    	</tr>
 				</table>
 			</fieldset>
-		</form>
+		<table id="result">
+			
+		</table>
 	</section>
 </body>
 
