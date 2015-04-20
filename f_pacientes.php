@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Nutrivital - Usuarios</title>
+	<title>Nutrivital - Pacientes</title>
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/main.js"></script>
@@ -15,11 +15,11 @@
 			<fieldset class="pacientes">
 				<div class="filas">
 			    	<label for="lblId">Id: </label>
-			    	<input type="text" name="txtId" id="id_pelicula">
+			    	<input type="text" name="txtId">
 				</div>
 				<div class="filas">	
 			    	<label for="lblNombre">Nombre: </label>
-			    	<input type="text" name="txtNombre" id="nombre_pelicula">
+			    	<input type="text" name="txtNombre">
 			    </div>
 				<div class="filas">
 					<label for="lblApellidos">Apellidos:</label>
@@ -42,7 +42,7 @@
 					<input type="text" name="txtPeso">
 				</div>
 				<div class="filas">
-					<label for="lblCircMuneca">Circ Muñeca:</label>
+					<label for="lblCircMuneca">Circunferencia Muñeca:</label>
 					<input type="text" name="txtCircMuneca">
 				</div>
 				<div class="filas">
