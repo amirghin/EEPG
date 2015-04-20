@@ -25,6 +25,32 @@ function busqueda_paciente(){
     }
 }
 
+function busqueda_Control(){
+    var buscar = $("#id_paciente").val();
+
+    if (buscar!=""){
+        var busqueda = $.ajax({
+            url: "busquedas/busqueda_control.php", // PHP que se ejecuta en el click del boton
+            type: "POST",
+            data: {id_paciente:buscar}, //Datos que se envian al PHP por medio del POST
+        });
+        busqueda.done(function(response){
+            var object = jQuery.parseJSON(response);
+            //console.log(response);
+            var table = "<tr><td>Peso</td><td>IMC</td><td>Grasa</td><td>Musculo</td><td>Agua</td><td>Grasa Visceral</td><td>Edad Metabolica</td><td>Pecho</td><td>Circunferencia Cintura</td><td>Cadera</td><td>Notas</td><td>Fecha</td><td>Modificar</td><td>Eliminar</td></tr>";
+            var tableValues = "";
+            $.each(object.controles, function(key,value){
+
+                tableValues += "<tr><td>"+value.controles_peso+"</td><td>"+value.controles_imc+"</td><td>"+value.controles_porc_grasa+"</td><td>"+value.porc_musculo+"</td><td>"+value.controles_porc_agua+"</td><td>"+value.controles_porc_grasa_visc+"</td><td>"+value.controles_edad_metab+"</td><td>"+value.controles_med_pecho+"</td><td>"+value.controles_circ_cintura+"</td><td>"+value.controles_med_cadera+"</td><td>"+value.controles_notas+"</td><td>"+value.controles_fecha+"</td><td><input type='button' value='Modificar'/></td><td><input type='button' value='Eliminar'/></td></tr>";
+            });
+            $("#result").html(table+tableValues);
+        });
+        busqueda.error(function(error){
+            alert("error");
+        });
+
+    }
+}
 
 $(document).ready(function(){
 
@@ -35,6 +61,17 @@ $(document).ready(function(){
     $('.busqueda_pacientes').keyup(function(e) {
         if(e.keyCode == 13) {
             busqueda_paciente();
+        }
+    });   
+
+
+	$("#buscar_control").on("click", function(){
+		busqueda_Control();
+	})
+
+    $('.buscar_control').keyup(function(e) {
+        if(e.keyCode == 13) {
+            busqueda_Control();
         }
     });   
 
