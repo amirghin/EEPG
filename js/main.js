@@ -9,7 +9,7 @@ function busqueda_paciente(){
         });
         busqueda.done(function(response){
             var object = jQuery.parseJSON(response);
-            console.log(object);
+            //console.log(response);
             var table = "<tr><td>Nombre</td><td>Apellido</td><td>Genero</td><td>Fecha Ingreso</td><td>Fecha nacimiento</td> <td>Talla</td><td>Peso Meta</td><td>Circunferencia de la muneca</td><td>Antecedentes personales</td> <td>Padecimientos familiares</td> <td>Nombre usuario</td>  <td>Modificar</td> <td>Eliminar</td></tr> ";
             var tableValues = "";
             $.each(object.pacientes, function(key,value){
