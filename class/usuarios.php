@@ -22,13 +22,12 @@ class usuarios{
 	}
 
 
-	function insertar_usuario($usuario , $contrasena, $email = "NULL"){
+	function insertar_usuario($conexion, $usuario , $contrasena, $email, $rol="2"){
 
-
-		echo "{$usuario} {$contrasena} {$email}";
-		/*try{
-			$insert = "INSERT INTO 
-			           VALUES ";	
+		$contrasena = $this->encriptar_contrasena($contrasena);
+		try{
+			$insert = "INSERT INTO usuarios (usuarios_nombre, usuarios_email, usuarios_password, roles_id)
+			           VALUES ('{$usuario}', '{$email}', '{$contrasena}', {$rol})";	
 
 			$resultado = mysqli_query($conexion, $insert);
 
@@ -44,7 +43,35 @@ class usuarios{
 		}catch(Exception $e){
 			$this->mensaje = $e->GetMessage();
 
-		}*/
+		}
+	}
+
+
+	function existencia_usuario($usuario, $conexion){
+		try{
+			$query = "SELECT count(usuarios_nombre) existe FROM usuarios WHERE usuarios_nombre='{$usuario}'";
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}else{
+
+				$usuario = mysqli_fetch_assoc($resultado);
+				return '{"usuario":'.json_encode($usuario).'}';
+			}
+
+		}catch (Exception $e){
+			  return json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+
+
+
 	}
 
 
@@ -69,7 +96,7 @@ class usuarios{
 				if($this->verificar_contrasena($contrasena, $usuario['usuarios_password'])) {
 
 					unset($usuario['usuarios_password']);
-					return '{"paciente":'.json_encode($usuario).'}';
+					return '{"usuario":'.json_encode($usuario).'}';
 
 				}else{
 

@@ -58,7 +58,7 @@ function verificar_login(){
     
     if( username != "" && password != ""){
         var buscar_usuario = $.ajax({
-        url: "busquedas/inicio_sesion.php", // PHP que se ejecuta en el click del boton
+        url: "busquedas/busqueda_usuario.php", // PHP que se ejecuta en el click del boton
         type: "POST",
         data: {username: username, password: password}, //Datos que se envian al PHP por medio del POST
         });
@@ -69,10 +69,39 @@ function verificar_login(){
                 alert(object.error.msg);
             }else{
                 
-                var hidden_info = "<input type='hidden' name='aut_user' value='" + object.paciente.usuarios_nombre + "'>" +
-                                  "<input type='hidden' name='user_rol' value='" + object.paciente.roles_id + "'>";
+                var hidden_info = "<input type='hidden' name='aut_user' value='" + object.usuario.usuarios_nombre + "'>" +
+                                  "<input type='hidden' name='user_rol' value='" + object.usuario.roles_id + "'>";
                 $("#f_login").append(hidden_info);
                 $("#f_login").submit();
+            }
+
+        });
+        
+    }
+
+}
+
+function verificar_existencia(){
+
+    var username = $("#txtUser").val();
+    if( username != ""){
+        var buscar_usuario = $.ajax({
+        url: "busquedas/busqueda_usuario.php", // PHP que se ejecuta en el click del boton
+        type: "POST",
+        data: {username: username}, //Datos que se envian al PHP por medio del POST
+        });
+
+        buscar_usuario.done(function(response){
+            var object = jQuery.parseJSON(response);
+            if(object.error){
+                alert(object.error.msg);
+            }else if(object.usuario.existe == 1){
+
+                alert("El usuario " + username + " ya existe");
+               
+            }else if(object.usuario.existe == 0){
+
+                 $("#i_pacientes").submit();
             }
 
         });
@@ -119,5 +148,10 @@ $(document).ready(function(){
             verificar_login();
         }
     });
+
+    $("#i_pacientesBtn").on("click", function(){
+        verificar_existencia();
+    });
+
 
 })
