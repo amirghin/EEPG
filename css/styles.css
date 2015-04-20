@@ -50,7 +50,7 @@ body{
 	float: left;
 }
 .Formulario select,
-.Formulario input:not([type=submit]) {
+.Formulario input:not([type=button]) {
 	padding: 5px;
 	margin-right: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.3);
@@ -59,7 +59,7 @@ body{
 				0px 1px 0px 0px rgba(250, 250, 250, 0.5) ;
 	width: 240px;
 }
-.Formulario input[type=submit] {
+.Formulario input[type=button] {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	background: #64c8ef; /* Old browsers */
 	background: -moz-linear-gradient(top,  #64c8ef 0%, #00a2e2 100%); /* FF3.6+ */

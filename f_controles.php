@@ -33,8 +33,8 @@
 						<td><input type="text" name="txtMusculo"></td>
 					</tr>
 			    	<tr>
-						<td><label for="lblAguaCorporal">Agua Corporal:</label></td>
-						<td><input type="text" name="txtAguaCorporal"></td>
+						<td><label for="lblAguaCorporal">Porcentaje de Agua:</label></td>
+						<td><input type="text" name="txtPorcentajeAgua"></td>
 					</tr>
 			    	<tr>
 						<td><label for="lblGrasaVisceral">Grasa Visceral:</label></td>

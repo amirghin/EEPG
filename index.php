@@ -1,7 +1,6 @@
 <?php
-	session_start();
-	unset($_SESSION["sesionActive"]);
- ?>
+require "class/conexion.php";
+?>
  
 <!DOCTYPE html>
 <html>
@@ -11,7 +10,7 @@
 </head>
 <body>
 	<section class="Formulario">
-		<form name="login" action="php/validaUser.php" method="post">
+		<form name="login" action="" method="post">
 			<h1>Login</h1>
 			<table>
 				<tr>
@@ -23,7 +22,7 @@
 					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
-					<td class="center" colspan="2"><input name="loginBtn" type="submit" value="Login"></td>
+					<td class="center" colspan="2"><input name="loginBtn" type="button" value="Login"></td>
 				</tr>
 			</ul>
 		</form>
