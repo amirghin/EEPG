@@ -55,8 +55,6 @@ function verificar_login(){
 
     var username = $("#username").val();
     var password = $("#password").val(); 
-
-    
     
     if( username != "" && password != ""){
         var buscar_usuario = $.ajax({
@@ -70,8 +68,11 @@ function verificar_login(){
             if(object.error){
                 alert(object.error.msg);
             }else{
-
-                alert(object.paciente.roles_id)
+                
+                var hidden_info = "<input type='hidden' name='aut_user' value='" + object.paciente.usuarios_nombre + "'>" +
+                                  "<input type='hidden' name='user_rol' value='" + object.paciente.roles_id + "'>";
+                $("#f_login").append(hidden_info);
+                $("#f_login").submit();
             }
 
         });
@@ -110,8 +111,13 @@ $(document).ready(function(){
     });
     
     $("#loginBtn").on("click", function(){
-
         verificar_login();
     });
-    
+
+    $("#f_login").keypress(function(e) {
+        if(e.which == 13) {
+            verificar_login();
+        }
+    });
+
 })
