@@ -52,19 +52,19 @@
 					    	</tr>
 					    	<tr>
 								<td><label for="lblFechaNacimiento">Fecha Nacimiento:</label></td>
-								<td><input type="text" name="txtFechaNacimiento"></td>
+								<td><input type="date" name="txtFechaNacimiento"></td>
 					    	</tr>
 					    	<tr>
-								<td><label for="lbltalla">Talla:</label></td>
-								<td><input type="text" name="txtTalla"></td>
+								<td><label for="lbltalla">Talla (cm):</label></td>
+								<td><input type="number" name="txtTalla" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
-								<td><label for="lblPeso">Peso Meta:</label></td>
-								<td><input type="text" name="txtPeso"></td>
+								<td><label for="lblPeso">Peso Meta (kg):</label></td>
+								<td><input type="number" name="txtPeso" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
-								<td><label for="lblCircMuneca">Circunferencia Muñeca:</label></td>
-								<td><input type="text" name="txtCircMuneca"></td>
+								<td><label for="lblCircMuneca">Circunferencia Muñeca (cm):</label></td>
+								<td><input type="number" name="txtCircMuneca" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblAntecendetes">Antecedentes Personales:</label></td>
@@ -95,7 +95,7 @@
 					    	</tr>
 					    	<tr>
 								<td><label for="lblEmail">Email:</label></td>
-								<td><input type="text" name="txtEmail"></td>
+								<td><input type="email" name="txtEmail"></td>
 					    	</tr>
 					    	<tr>
 					    		<td class="center" colspan="2"><input name="pacientesBtn" type="submit" value="Insertar"></td>
