@@ -2,7 +2,7 @@
 
 
 
- require "conexion.php";
+ require "../class/conexion.php";
 
 
 
