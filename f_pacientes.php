@@ -17,20 +17,22 @@
 			<fieldset class="Pacientes">
 				<table>
 			    	<tr>
-				    	<td><label for="lblId">Id: </label></td>
-				    	<td><input type="text" name="txtId"></td>
-			    	</tr>
-			    	<tr>
 				    	<td><label for="lblNombre">Nombre: </label></td>
 				    	<td><input type="text" name="txtNombre"></td>
 			    	</tr>
-				    	<tr>
+				    <tr>
 						<td><label for="lblApellidos">Apellidos:</label></td>
 						<td><input type="text" name="txtApellido"></td>
 			    	</tr>
 			    	<tr>
-						<td><label for="lblFecha">Fecha:</label></td>
-						<td><input type="text" name="txtFecha"></td>
+						<td><label for="lblFecha">Género</label></td>
+						<td>
+							<select name="selectGenero">
+								<option disabled selected> -- Seleccione un género -- </option>
+								<option value="m">Masculino</option>
+								<option value="f">Femenino</option>
+							</select>
+						</td>
 			    	</tr>
 			    	<tr>
 						<td><label for="lblFechaNacimiento">Fecha Nacimiento:</label></td>
@@ -68,15 +70,6 @@
 			    	<tr>
 						<td><label for="lblEmail">Email:</label></td>
 						<td><input type="text" name="txtEmail"></td>
-			    	</tr>
-			    	<tr>
-						<td><label for="role">Role :</label></td>
-						<td>
-							<select name="selectRole">
-								<option value="0">None</option>
-								<option value="1">1</option>
-							</select>
-						</td>
 			    	</tr>
 			    	<tr>
 			    		<td class="center" colspan="2"><input name="pacientesBtn" type="submit" value="Insertar"></td>
