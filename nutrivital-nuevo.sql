@@ -103,3 +103,12 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+insert into roles (roles_id, roles_nombre, roles_descripcion) values (1,'test','hola');
+
+insert into usuarios(usuarios_nombre, usuarios_email, usuarios_password, roles_id) values ('test','test@test.com', '123', 1);
+
+insert into pacientes (pacientes_id, pacientes_nombre, pacientes_apellidos, pacientes_genero, 
+pacientes_fecha, pacientes_fecha_nac, pacientes_talla, pacientes_peso_meta, pacientes_circ_muneca, 
+pacientes_ant_personales,pacientes_padec_familiares, usuarios_nombre) values (1, 'fabiola', 'mayorga',
+'f', '27/04/2105', '01/04/1991', 2, 3,5, 'pribea', 'prueba', 'test');
