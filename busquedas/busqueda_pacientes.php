@@ -17,7 +17,7 @@
 
 	}
 
-	echo '{"pacientes":'.json_encode($array).'}';
+	echo '{"pacientes":'.json_encode($array).'}'; // creando JSON que se envia al jQuery
 
 
 ?>
