@@ -30,13 +30,27 @@ function verificar_login(){
 
     var username = $("#username").val();
     var password = $("#password").val(); 
-    if( username != "" && password != ""){
 
+    
+    
+    if( username != "" && password != ""){
         var buscar_usuario = $.ajax({
         url: "busquedas/inicio_sesion.php", // PHP que se ejecuta en el click del boton
         type: "POST",
-        data: {nombre_paciente:buscar}, //Datos que se envian al PHP por medio del POST
+        data: {username: username, password: password}, //Datos que se envian al PHP por medio del POST
         });
+
+        buscar_usuario.done(function(response){
+            var object = jQuery.parseJSON(response);
+            if(object.error){
+                alert(object.error.msg);
+            }else{
+
+                alert(object.paciente.roles_id)
+            }
+
+        });
+        
     }
 
 }

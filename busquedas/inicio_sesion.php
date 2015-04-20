@@ -5,9 +5,9 @@ require "../class/usuario.php";
 
 $usuario = new usuarios;
 
-if(isset($_GET['username'], $_GET['password'])){
+if(isset($_POST['username'], $_POST['password'])){
 
-$info_usuario = $usuario->verificar_usuario($_GET['username'], $_GET['password'], $conexion);
+$info_usuario = $usuario->verificar_usuario($_POST['username'], $_POST['password'], $conexion);
 
 echo $info_usuario;
 
