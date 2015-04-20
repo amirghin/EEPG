@@ -1,6 +1,8 @@
 <?php
 class usuarios{
 	
+	public $mensaje = "";
+
 	function verificar_contrasena($contrasena, $contrasena_enc){
 
 		if(password_verify($contrasena, $contrasena_enc)){
@@ -10,6 +12,41 @@ class usuarios{
 		}
 
 	}
+
+	function encriptar_contrasena($contrasena){
+		$cost = array('cost' => 11);
+		$encrypted = password_hash($contrasena, PASSWORD_BCRYPT, $cost);
+
+		return $encrypted;
+
+	}
+
+
+	function insertar_usuario($usuario , $contrasena, $email = "NULL"){
+
+
+		echo "{$usuario} {$contrasena} {$email}";
+		/*try{
+			$insert = "INSERT INTO 
+			           VALUES ";	
+
+			$resultado = mysqli_query($conexion, $insert);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($conexion));
+				return false;
+			}else{
+
+				return true;
+			}
+				
+		}catch(Exception $e){
+			$this->mensaje = $e->GetMessage();
+
+		}*/
+	}
+
 
 	function verificar_usuario($usuario, $contrasena, $conexion){
 
@@ -55,7 +92,4 @@ class usuarios{
 	}
 
 }
-
-
-
 ?>

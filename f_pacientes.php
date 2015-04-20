@@ -1,3 +1,19 @@
+<?php
+
+require "class/conexion.php";
+require "class/usuarios.php";
+
+$usuario = new usuarios;
+
+if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
+	$usuario->insertar_usuario($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail']);
+}elseif(isset($_POST['txtUser'], $_POST['txtPass'])){
+	$usuario->insertar_usuario($_POST['txtUser'], $_POST['txtPass']);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,11 +103,11 @@
 						<table>
 					    	<tr>
 						    	<td><label for="lblUser">Usuario: </label></td>
-						    	<td><input type="text" name="txtUser"></td>
+						    	<td><input type="text" name="txtUser" required></td>
 					    	</tr>
 					    	<tr>
 						    	<td><label for="lblPass">Password: </label></td>
-						    	<td><input type="text" name="txtPass"></td>
+						    	<td><input type="text" name="txtPass" required></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblEmail">Email:</label></td>

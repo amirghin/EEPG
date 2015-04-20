@@ -33,8 +33,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nutrivital`.`usuarios` (
   `usuarios_nombre` VARCHAR(16) NOT NULL COMMENT 'Nombre del usuario, llave primaria',
-  `usuarios_email` VARCHAR(45) NOT NULL COMMENT 'correo electrónico del paciente',
-  `usuarios_password` VARCHAR(45) NOT NULL COMMENT 'Contraseña para accesar el portal web',
+  `usuarios_email` VARCHAR(45) NULL COMMENT 'correo electrónico del paciente',
+  `usuarios_password` VARCHAR(255) NOT NULL COMMENT 'Contraseña para accesar el portal web',
   `roles_id` INT NOT NULL,
   PRIMARY KEY (`usuarios_nombre`),
   INDEX `fk_usuarios_roles1_idx` (`roles_id` ASC),
@@ -104,18 +104,15 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-insert into roles (roles_id, roles_nombre, roles_descripcion) values (1,'test','hola');
 
-insert into usuarios(usuarios_nombre, usuarios_email, usuarios_password, roles_id) values ('test','test@test.com', '123', 1);
+INSERT INTO `nutrivital`.`roles` (`roles_id`, `roles_nombre`, `roles_descripcion`) VALUES ('1', 'nutricionista', 'Nutricionista - Full Acceso');
+INSERT INTO `nutrivital`.`roles` (`roles_id`, `roles_nombre`, `roles_descripcion`) VALUES ('2', 'paciente', 'Paciente - Acceso solo a Controles');
+INSERT INTO `nutrivital`.`usuarios` (`usuarios_nombre`, `usuarios_email`, `usuarios_password`, `roles_id`) VALUES ('nutri', 'nutri@nutri.com', '$2y$11$Z3MxI/oetz8Da4hfQ5KT..x4QNE819z2/EFqi9ArbszgJqC.n9.G.', '1');
+INSERT INTO `nutrivital`.`usuarios` (`usuarios_nombre`, `usuarios_email`, `usuarios_password`, `roles_id`) VALUES ('pac', 'pac@nutri.com', '$2y$11$Z3MxI/oetz8Da4hfQ5KT..x4QNE819z2/EFqi9ArbszgJqC.n9.G.', '2');
 
-insert into pacientes (pacientes_id, pacientes_nombre, pacientes_apellidos, pacientes_genero, 
-pacientes_fecha, pacientes_fecha_nac, pacientes_talla, pacientes_peso_meta, pacientes_circ_muneca, 
-pacientes_ant_personales,pacientes_padec_familiares, usuarios_nombre) values (1, 'fabiola', 'mayorga',
-'f', '27/04/2105', '01/04/1991', 2, 3,5, 'pribea', 'prueba', 'test');
-
-insert into pacientes (pacientes_id, pacientes_nombre, pacientes_apellidos, pacientes_genero, 
-pacientes_fecha, pacientes_fecha_nac, pacientes_talla, pacientes_peso_meta, pacientes_circ_muneca, 
-pacientes_ant_personales,pacientes_padec_familiares, usuarios_nombre) values (1, 'luis', 'mayorga',
-'f', '27/04/2105', '01/04/1991', 2, 3,5, 'pribesjfkksha', 'prusdhgkjsfeba', 'test');
-
-select * from pacientes;
+CREATE USER sys_nutrivital@localhost IDENTIFIED BY 'nutrivital';
+GRANT DELETE ON nutrivital.* TO sys_nutrivital@localhost;
+GRANT SELECT ON nutrivital.* TO sys_nutrivital@localhost;
+GRANT INSERT ON nutrivital.* TO sys_nutrivital@localhost;
+GRANT UPDATE ON nutrivital.* TO sys_nutrivital@localhost;
+FLUSH PRIVILEGES;
