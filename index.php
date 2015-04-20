@@ -22,7 +22,7 @@ require "class/conexion.php";
 					<td><input type="password" name="password"></td>
 				</tr>
 				<tr>
-					<td class="center" colspan="2"><input name="loginBtn" type="button" value="Login"></td>
+					<td class="center" colspan="2"><input name="loginBtn" type="button" value="Login" onclick="prueba();"></td>
 				</tr>
 			</ul>
 		</form>
