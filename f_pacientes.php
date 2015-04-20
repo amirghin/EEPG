@@ -1,84 +1,87 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Nutrivital - Pacientes</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
-	<section class="estilos_form">
-		<form method="POST" enctype="multipart/form-data" action="">		
-			<fieldset class="pacientes">
-				<div class="filas">
-			    	<label for="lblId">Id: </label>
-			    	<input type="text" name="txtId">
-				</div>
-				<div class="filas">	
-			    	<label for="lblNombre">Nombre: </label>
-			    	<input type="text" name="txtNombre">
-			    </div>
-				<div class="filas">
-					<label for="lblApellidos">Apellidos:</label>
-					<input type="text" name="txtApellido">
-				</div>
-				<div class="filas">
-					<label for="lblFecha">Fecha:</label>
-					<input type="text" name="txtFecha">
-				</div>
-				<div class="filas">
-					<label for="lblFechaNacimiento">Fecha Nacimiento:</label>
-					<input type="text" name="txtFechaNacimiento">
-				</div>
-				<div class="filas">
-					<label for="lbltalla">Talla:</label>
-					<input type="text" name="txtTalla">
-				</div>
-				<div class="filas">
-					<label for="lblPeso">Peso Meta:</label>
-					<input type="text" name="txtPeso">
-				</div>
-				<div class="filas">
-					<label for="lblCircMuneca">Circunferencia Muñeca:</label>
-					<input type="text" name="txtCircMuneca">
-				</div>
-				<div class="filas">
-					<label for="lblAntecendetes">Antecedentes Personales:</label>
-					<textarea name="txtAntecedentes"></textarea>
-				</div>
-				<div class="filas">
-					<label for="lblPadecimientos">Padecimientos Familiares:</label>
-					<textarea name="txtPadecimientos"></textarea>
-				</div>
-
+	<section class="Formulario">
+		<form method="POST" enctype="multipart/form-data" action="">
+			<h1>Formulario de Pacientes</h1>	
+			<fieldset class="Pacientes">
+				<table>
+			    	<tr>
+				    	<td><label for="lblId">Id: </label></td>
+				    	<td><input type="text" name="txtId"></td>
+			    	</tr>
+			    	<tr>
+				    	<td><label for="lblNombre">Nombre: </label></td>
+				    	<td><input type="text" name="txtNombre"></td>
+			    	</tr>
+				    	<tr>
+						<td><label for="lblApellidos">Apellidos:</label></td>
+						<td><input type="text" name="txtApellido"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblFecha">Fecha:</label></td>
+						<td><input type="text" name="txtFecha"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblFechaNacimiento">Fecha Nacimiento:</label></td>
+						<td><input type="text" name="txtFechaNacimiento"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lbltalla">Talla:</label></td>
+						<td><input type="text" name="txtTalla"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblPeso">Peso Meta:</label></td>
+						<td><input type="text" name="txtPeso"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblCircMuneca">Circunferencia Muñeca:</label></td>
+						<td><input type="text" name="txtCircMuneca"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblAntecendetes">Antecedentes Personales:</label></td>
+						<td><textarea name="txtAntecedentes"></textarea></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblPadecimientos">Padecimientos Familiares:</label></td>
+						<td><textarea name="txtPadecimientos"></textarea></td>
+			    	</tr>
+			    	<tr>
 				<!-- USUARIO -->
-				<div class="filas">
-			    	<label for="lblUser">Usuario: </label>
-			    	<input type="text" name="txtUser">
-				</div>
-				<div class="filas">	
-			    	<label for="lblPass">Password: </label>
-			    	<input type="text" name="txtPass">
-			    </div>
-				<div class="filas">
-					<label for="lblEmail">Email:</label>
-					<input type="text" name="txtEmail">
-				</div>
-				<div class="filas">
-					<label for="role">Role :</label>
-					<select name="selectRole">
-						<option value="0">None</option>
-						<option value="1">1</option>
-					</select>
-				</div>
-
-				<div class="filas">
-			    	<input type="button" value="Insertar" class="button" id="crear_peliculas">
-			    	<input type="hidden" name="action" value="upload" /> 
-			    </div>
+				    	<td><label for="lblUser">Usuario: </label></td>
+				    	<td><input type="text" name="txtUser"></td>
+			    	</tr>
+			    	<tr>
+				    	<td><label for="lblPass">Password: </label></td>
+				    	<td><input type="text" name="txtPass"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="lblEmail">Email:</label></td>
+						<td><input type="text" name="txtEmail"></td>
+			    	</tr>
+			    	<tr>
+						<td><label for="role">Role :</label></td>
+						<td>
+							<select name="selectRole">
+								<option value="0">None</option>
+								<option value="1">1</option>
+							</select>
+						</td>
+			    	</tr>
+			    	<tr>
+			    		<td class="center" colspan="2"><input name="pacientesBtn" type="submit" value="Insertar"></td>
+			    	</tr>
+				</table>
 			</fieldset>
 		</form>
 	</section>

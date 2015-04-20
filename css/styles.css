@@ -2,43 +2,34 @@ body{
 	margin: 0px;
 	padding: 0px;
 	background-image: url("../images/bg.jpg");
+	background-color: #153c7a;
+	background-repeat: no-repeat;
 	background-size: cover;
 }
-html {
+.Formulario html {
 	font-size: 10pt;
 }
 :focus {
 	outline: 0;
 }
 
-h1{
+.Formulario h1{
 	margin: 0px 0px 15px 0px;
 	text-align: center;
 }
 
-.center{
+.Formulario .center{
 	text-align: center;
 }
 
+.Formulario label{
+	font-weight: bold;
+}
+
 /******************
-	WRAPPER
+	Formulario
 ******************/
-.wrapper{
-	width: 1000px;
-	margin: 0 auto;
-}
-header{
-	display: block;
-    margin: 0 auto;
-    width: 300px;
-}
-.welcome .center{
-    width: 100%;
-	display: block;
-}
-.welcome h1{
-	margin-top: 20px;
-}
+
 .Formulario {
 	width: 410px;
 	margin: 60px auto;
@@ -85,6 +76,9 @@ header{
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 	width: 200px;
+}
+.Formulario textarea{
+	width: 245px;
 }
 .Formulario table{
 	width: 100%;
