@@ -3,7 +3,7 @@ class usuarios{
 	
 	function verificar_contrasena($contrasena, $contrasena_enc){
 
-		if($contrasena == $contrasena_enc){
+		if(password_verify($contrasena, $contrasena_enc)){
 			return true;
 		}else{
 			return false;
