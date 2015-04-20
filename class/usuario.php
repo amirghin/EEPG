@@ -32,7 +32,7 @@ class usuarios{
 				if($this->verificar_contrasena($contrasena, $usuario['usuarios_password'])) {
 
 					unset($usuario['usuarios_password']);
-					return json_encode($usuario);
+					return '{"paciente":'.json_encode($usuario).'}';
 
 				}else{
 
