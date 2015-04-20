@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+
+/*if(isset($_SESSION["active_user"])){
+
+	header ("Location: f_controles.php");
+
+}*/
+
+if(isset($_POST["aut_user"], $_POST["user_rol"])){
+
+	$_SESSION["active_user"] = $_POST["aut_user"];
+	$_SESSION["active_user_rol"] = $_POST["user_rol"];
+	header ("Location: f_controles.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +27,7 @@
 </head>
 <body>
 	<section class="Formulario">
-		<form name="login" action="" method="POST" enctype="multipart/form-data">
+		<form name="f_login" id="f_login" action="" method="POST" enctype="multipart/form-data">
 			<h1>Login</h1>
 			<table>
 				<tr>
