@@ -8,7 +8,7 @@
 </head>
 <body>
 	<section class="Formulario">
-		<form name="login" action="" method="post">
+		<form name="login" action="" method="POST" enctype="multipart/form-data">
 			<h1>Login</h1>
 			<table>
 				<tr>
@@ -20,7 +20,7 @@
 					<td><input type="password" name="password" id="password"></td>
 				</tr>
 				<tr>
-					<td class="center" colspan="2"><input name="loginBtn" type="button" value="Login" onclick="prueba();"></td>
+					<td class="center" colspan="2"><input name="loginBtn" id="loginBtn" type="button" value="Login"></td>
 				</tr>
 			</ul>
 		</form>

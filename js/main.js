@@ -26,16 +26,36 @@ function busqueda_paciente(){
 }
 
 
+function verificar_login(){
+
+    var username = $("#username").val();
+    var password = $("#password").val(); 
+    if( username != "" && password != ""){
+
+        var buscar_usuario = $.ajax({
+        url: "busquedas/inicio_sesion.php", // PHP que se ejecuta en el click del boton
+        type: "POST",
+        data: {nombre_paciente:buscar}, //Datos que se envian al PHP por medio del POST
+        });
+    }
+
+}
+
+
 $(document).ready(function(){
 
 	$("#buscar_pacientes").on("click", function(){
 		busqueda_paciente();
-	})
+	});
 
     /**** BTN TAB USUARIO *****/
     $(".nextTab").click(function(){
         $('.tabUsuario').tab('show');
     });
     
+    $("#loginBtn").on("click", function(){
+
+        verificar_login();
+    });
     
 })
