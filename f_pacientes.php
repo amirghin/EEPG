@@ -2,15 +2,22 @@
 
 require "class/conexion.php";
 require "class/usuarios.php";
+require "class/pacientes.php";
 
 $usuario = new usuarios;
+$paciente = new pacientes;
 
 if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
-	$usuario->insertar_usuario($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail']);
-}elseif(isset($_POST['txtUser'], $_POST['txtPass'])){
-	$usuario->insertar_usuario($_POST['txtUser'], $_POST['txtPass']);
+	$insertar_usuario = $usuario->insertar_usuario($conexion, $_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail']);
+	if($insertar_usuario){
+
+		$insertar_paciente = $paciente->insertar_paciente($conexion, $_POST['txtNombre'], $_POST['txtApellido'], $_POST['selectGenero'],
+								$_POST['txtFechaNacimiento'],$_POST['txtTalla'], $_POST['txtPesoMeta'], $_POST['txtCircMuneca'],
+								$_POST['txtAntecedentes'], $_POST['txtPadecimientos'], $_POST['txtUser']);
+	}
 }
 
+echo $paciente->mensaje;
 ?>
 
 
@@ -32,7 +39,7 @@ if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
 
 <body>
 	<section class="Formulario">
-		<form method="POST" enctype="multipart/form-data" action="">
+		<form method="POST" enctype="multipart/form-data" action="" id="i_pacientes" name="i_pacientes">
 			<h1>Formulario de Pacientes</h1>
 			<div role="tabpanel">
 
@@ -76,7 +83,7 @@ if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
 					    	</tr>
 					    	<tr>
 								<td><label for="lblPeso">Peso Meta (kg):</label></td>
-								<td><input type="number" name="txtPeso" min="0" step="any"></td>
+								<td><input type="number" name="txtPesoMeta" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblCircMuneca">Circunferencia Muñeca (cm):</label></td>
@@ -103,7 +110,7 @@ if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
 						<table>
 					    	<tr>
 						    	<td><label for="lblUser">Usuario: </label></td>
-						    	<td><input type="text" name="txtUser" required></td>
+						    	<td><input type="text" name="txtUser" id="txtUser" required></td>
 					    	</tr>
 					    	<tr>
 						    	<td><label for="lblPass">Password: </label></td>
@@ -114,7 +121,7 @@ if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
 								<td><input type="email" name="txtEmail"></td>
 					    	</tr>
 					    	<tr>
-					    		<td class="center" colspan="2"><input name="pacientesBtn" type="submit" value="Insertar"></td>
+					    		<td class="center" colspan="2"><input name="i_pacientesBtn" id="i_pacientesBtn" type="button" value="Insertar"></td>
 					    	</tr>
 						</table>
 					</fieldset>
