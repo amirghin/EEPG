@@ -18,10 +18,12 @@
 				<table>
 			    	<tr>
 				    	<td><label for="lblId">Nombre Paciente: </label></td>
-				    	<td><input type="text" name="id_paciente"></td>
+				    	<td><input type="text" name="nombre_paciente"></td>
 			    	</tr>
 			    	<tr>
-			    		<td class="center" colspan="2"><input name="buscar_pacientes" type="button" value="Buscar"></td>
+			    		<td class="center" colspan="2">
+			    			<input name="buscar_pacientes" type="button" value="Buscar" id="buscar_pacientes">
+			    		</td>
 			    	</tr>
 				</table>
 			</fieldset>
