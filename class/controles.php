@@ -122,6 +122,41 @@ public $idPaciente;
 
 
 	}	
+    
+    function modificar_control($control_id, $peso, $grasa, $imc, $musculo, $porcentajeAgua, $grasaVisceral, $edadMetabolica, $medidaPecho, $circunferenciaCint, $medidaCadera, $notas, $fecha, $idPaciente, $conexion){
+        $mensaje = "";
+        try{
+            $query = "update controles set
+                    controles_peso = {$peso}, 
+                    controles_imc = {$imc}, 
+                    controles_porc_grasa = {$grasa}, 
+                    porc_musculo = {$musculo}, 
+                    controles_porc_agua = {$porcentajeAgua}, 
+                    controles_porc_grasa_visc = {$grasaVisceral}, 
+                    controles_edad_metab = {$edadMetabolica}, 
+                    controles_med_pecho = {$medidaPecho}, 
+                    controles_circ_cintura = {$circunferenciaCint}, 
+                    controles_med_cadera = '{$medidaCadera}', 
+                    controles_notas = '{$notas}', 
+                    controles_fecha = '{$fecha}', 
+                     where controles_id = {$control_id}";
+            echo $query;
+            
+            $resultado = mysqli_query($conexion, $query);
+            if (!$resultado)
+            {
+             throw new Exception(mysql_error()); 
+            }
+            $this->mensaje = 'El registro se actualizó correctamente';
+            return $resultado;
+          }catch(Exception $e){
+             throw new Exception($e->getMessage());
+
+          }
+        
+
+    
+    }
 
 }
 
