@@ -69,7 +69,7 @@ public $idPaciente;
 		}
 	}
 
-		function buscar_control($id_paciente, $conexion){
+	function buscar_control($id_paciente, $conexion){
 		try{
 			
 			$query = "SELECT * FROM controles WHERE pacientes_id LIKE %{$id_paciente}%";
@@ -94,6 +94,33 @@ public $idPaciente;
 			  	)
 			  ));
 		}
+	}
+
+	function eliminar_control($control, $conexion) {
+
+		try{
+			$query = "DELETE FROM controles WHERE controles_id = {$control}";
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}else{
+				return '{"delete":"true"}';
+			}
+				
+			
+
+		}catch (Exception $e){
+			  return json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+
+
 	}	
 
 }
