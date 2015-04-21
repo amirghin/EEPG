@@ -4,29 +4,32 @@ $mensaje = "";
 require_once("class/conexion.php");
 include_once("class/controles.php");
 
-	//if( (isset($_POST['txtId'], $_POST['txtPeso'], $_POST['txtGrasa'], $_POST['txtMusculo'], $_POST['txtPorcentajeAgua'], $_POST['txtGrasaVisceral'], $_POST['txtPesoMeta'], , $_POST['txtEdadmetabolica'], $_POST['txtMedidaPecho'], $_POST['txtCircCintura'], $_POST['txtMedidaCadera'], $_POST['txtNotes'], $_POST['txtFecha'] )) ){
+	if( (isset($_POST['txtId'], $_POST['txtPeso'], $_POST['txtImc'], $_POST['txtGrasa'], $_POST['txtMusculo'], $_POST['txtPorcentajeAgua'], $_POST['txtGrasaVisceral'], $_POST['txtEdadmetabolica'], $_POST['txtMedidaPecho'], $_POST['txtCircCintura'], $_POST['txtMedidaCadera'], $_POST['txtNotes'], $_POST['txtFecha'], $_POST['txtIdPaciente'] )) ){
 		try{
 			$control_id = $_POST['txtId'];
 			$peso = $_POST['txtPeso'];
+			$imc = $_POST['txtImc'];
 			$grasa = $_POST['txtGrasa'];
 			$musculo = $_POST['txtMusculo'];
 			$porcentajeAgua = $_POST['txtPorcentajeAgua'];
 			$grasaVisceral = $_POST['txtGrasaVisceral'];
-			$pesoMeta = $_POST['txtPesoMeta'];
 			$edadMetabolica = $_POST['txtEdadmetabolica'];
 			$medidaPecho = $_POST['txtMedidaPecho'];
 			$circunferenciaCint = $_POST['txtCircCintura'];
 			$medidaCadera = $_POST['txtMedidaCadera'];
 			$notas = $_POST['txtNotes'];
 			$fecha = $_POST['txtFecha'];
+			$idPaciente = $_POST['txtIdPaciente'];
 
-			echo $fecha;
+			$controles = new controles;
+			$controles->insertar($control_id,$peso,$imc,$grasa,$musculo,$porcentajeAgua,$grasaVisceral,$edadMetabolica,$medidaPecho,$circunferenciaCint,$medidaCadera,$notas,$fecha,$idPaciente,$conexion);
+			$mensaje = $controles->mensaje;
 
 		}catch(Exception $e){
-				$mensaje = $e->GetMessage();
+			$mensaje = $e->GetMessage();
 		}
 
-	//}
+	}
 
 ?>
 
@@ -48,7 +51,7 @@ include_once("class/controles.php");
 
 <body>
 	<section class="Formulario">
-		<form method="POST" enctype="multipart/form-data" action="">
+		<form method="POST" action="">
 			<h1>Formulario de Controles</h1>	
 			<fieldset class="controles">
 				<table>
@@ -61,11 +64,15 @@ include_once("class/controles.php");
 				    	<td><input type="text" name="txtPeso"></td>
 					</tr>
 			    	<tr>
-						<td><label for="lblGrasa">Grasa:</label></td>
+						<td><label for="lblGrasa">I.M.C</label></td>
+						<td><input type="text" name="txtImc"></td>
+					</tr>
+			    	<tr>
+						<td><label for="lblGrasa">% Grasa:</label></td>
 						<td><input type="text" name="txtGrasa"></td>
 					</tr>
 			    	<tr>
-						<td><label for="lblMusculo">Musculo:</label></td>
+						<td><label for="lblMusculo">% Musculo:</label></td>
 						<td><input type="text" name="txtMusculo"></td>
 					</tr>
 			    	<tr>
@@ -75,10 +82,6 @@ include_once("class/controles.php");
 			    	<tr>
 						<td><label for="lblGrasaVisceral">Grasa Visceral:</label></td>
 						<td><input type="text" name="txtGrasaVisceral"></td>
-					</tr>
-			    	<tr>
-						<td><label for="lblPesoMeta">Peso Meta:</label></td>
-						<td><input type="text" name="txtPesoMeta"></td>
 					</tr>
 			    	<tr>
 						<td><label for="lblEdadMetabolica">Edad Metabolica:</label></td>
@@ -102,10 +105,18 @@ include_once("class/controles.php");
 					</tr>
 			    	<tr>
 						<td><label for="lblFecha">Fecha:</label></td>
-						<td><input type="text" name="txtFecha" class="fecha"></td>
+						<td><input type="date" name="txtFecha" ></td>
+					</tr>
+			    	<tr>
+						<td><label for="lblFecha">Id del paciente:</label></td>
+						<td><input type="text" name="txtIdPaciente" ></td>
 					</tr>
 			    	<tr>
 			    		<td class="center" colspan="2"><input name="controlesBtn" type="submit" value="Insertar"></td>
+			    	</tr>
+			    	<tr>
+			    		<td class="center" colspan="2"><?php echo $mensaje; ?></td>
+
 			    	</tr>
 			    </div>
 				</table>
