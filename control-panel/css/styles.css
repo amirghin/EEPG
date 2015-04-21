@@ -33,6 +33,10 @@ footer {
 /*************************
 	CUSTOM STYLES
 *************************/
+.hidden{
+	display: none;
+}
+
 .Formulario input:not([type=button]) {
 	padding: 5px;
 	margin: 0px 10px 10px 10px;
@@ -84,6 +88,8 @@ input[type=button] {
 
     border: 1px solid #000;
     text-align: center;
+	
+	width: 100%;
 }
 
 .tableResult input[type="button"] {
