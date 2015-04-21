@@ -26,6 +26,7 @@
 			    	</tr>
 				</table>
 			</fieldset>
+
 		<table id="result">
 			
 		</table>
