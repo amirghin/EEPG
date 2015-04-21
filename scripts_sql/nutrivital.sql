@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `nutrivital`.`usuarios` (
   CONSTRAINT `fk_usuarios_roles1`
     FOREIGN KEY (`roles_id`)
     REFERENCES `nutrivital`.`roles` (`roles_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `nutrivital`.`pacientes` (
   CONSTRAINT `fk_pacientes_usuarios1`
     FOREIGN KEY (`usuarios_nombre`)
     REFERENCES `nutrivital`.`usuarios` (`usuarios_nombre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -95,8 +95,8 @@ CREATE TABLE IF NOT EXISTS `nutrivital`.`controles` (
   CONSTRAINT `fk_controles_pacientes1`
     FOREIGN KEY (`pacientes_id`)
     REFERENCES `nutrivital`.`pacientes` (`pacientes_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
