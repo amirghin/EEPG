@@ -31,7 +31,39 @@ function eliminar_usuario(usuario){
     }
 
 }
+function eliminar_control(control_id){
 
+    if(control_id!=""){
+
+        var eliminar = $.ajax({
+
+            url: "eliminar_control.php",
+            type: "POST",
+            data: {controles_id:control_id},
+
+        });
+
+        eliminar.done(function(response){
+
+            console.log(response);
+            var object = jQuery.parseJSON(response);
+
+                if(object.error){
+                    alert(object.error.msg);
+                }else{
+                
+                alert("Se elimino el registro");
+            }
+
+
+        });
+
+        eliminar.error(function(error){
+            alert("error");
+        });
+    }
+
+}
 function busqueda_paciente(){
     var buscar = $("#nombre_paciente").val();
     console.log(buscar);
@@ -55,17 +87,15 @@ function busqueda_paciente(){
                     tableValues += "<tr><td>"+value.pacientes_id+"</td><td>"+value.pacientes_nombre+"</td><td>"+value.pacientes_apellidos+"</td><td>"+value.pacientes_genero+"</td> <td>"+value.pacientes_fecha+"</td> <td>"+value.pacientes_fecha_nac+"</td> <td>"+value.pacientes_talla+"</td> <td>"+value.pacientes_peso_meta+"</td> <td>"+value.pacientes_circ_muneca+"</td> <td class='hidden'>"+value.pacientes_ant_personales+"</td> <td class='hidden'>"+value.pacientes_padec_familiares+"</td><td>"+value.usuarios_nombre+"</td><td> <input type='button' value='Eliminar' class='btn_eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td><td><input type='hidden' value="+ value.pacientes_id+"></td></tr>";
                 });
                 $("#result").html(table+tableValues);
-                    $(".btn_eliminar").click(function() {
+                $(".btn_eliminar").click(function() {
                     var $row = $(this).closest("tr"),
                     $id_paciente = $row.find("td:nth-child(1)");
                     $nom_usuario = $row.find("td:nth-child(12)");
-                    
-
+                
                     if(confirm("Presione OK para eliminar el usuario")){
                         eliminar_usuario($nom_usuario.text());
                     }
-                    
-                    
+                     
                 });
             }
             
@@ -87,17 +117,31 @@ function busqueda_Control(){
             data: {id_paciente:buscar}, //Datos que se envian al PHP por medio del POST
         });
         busqueda.done(function(response){
-            //alert();
-            console.log(response);
             var object = jQuery.parseJSON(response);
-            //console.log(response);
-            var table = "<tr><td>Peso</td><td>IMC</td><td>Grasa</td><td>Musculo</td><td>Agua</td><td>Grasa Visceral</td><td>Edad Metabolica</td><td>Pecho</td><td>Circunferencia Cintura</td><td>Cadera</td><td>Notas</td><td>Fecha</td><td>Modificar</td><td>Eliminar</td></tr>";
-            var tableValues = "";
-            $.each(object.controles, function(key,value){
 
-               tableValues += "<tr><td>"+value.controles_peso+"</td><td>"+value.controles_imc+"</td><td>"+value.controles_porc_grasa+"</td><td>"+value.porc_musculo+"</td><td>"+value.controles_porc_agua+"</td><td>"+value.controles_porc_grasa_visc+"</td><td>"+value.controles_edad_metab+"</td><td>"+value.controles_med_pecho+"</td><td>"+value.controles_circ_cintura+"</td><td>"+value.controles_med_cadera+"</td><td>"+value.controles_notas+"</td><td>"+value.controles_fecha+"</td><td><a href='f_modificar_controles.php?id_paciente="+value.pacientes_id+"&peso="+value.controles_peso+"&imc="+value.controles_imc+"&grasa="+value.controles_porc_grasa+"&musculo="+value.porc_musculo+"&agua="+value.controles_porc_agua+"&grasa_visceral="+value.controles_porc_grasa_visc+"&edad_meta="+value.controles_edad_metab+"&pecho="+value.controles_med_pecho+"&cintura="+value.controles_circ_cintura+"&cadera="+value.controles_med_cadera+"&nota="+value.controles_notas+"&fecha="+value.controles_fecha+"&id_control="+value.controles_id+"'>Modificar</a></td><td><input type='button' value='Eliminar'/></td></tr>";
-            });
+            if(object.error){
+                $("#result").html(object.error.msg);
+            }else{
+                var object = jQuery.parseJSON(response);
+                var table = "<tr><td>Peso</td><td>IMC</td><td>Grasa</td><td>Musculo</td><td>Agua</td><td>Grasa Visceral</td><td>Edad Metabolica</td><td>Pecho</td><td>Circunferencia Cintura</td><td>Cadera</td><td>Notas</td><td>Fecha</td><td>Modificar</td><td>Eliminar</td></tr>";
+                var tableValues = "";
+                $.each(object.controles, function(key,value){
+
+                    tableValues += "<tr><td class='hidden'>"+ value.controles_id +"</td><td>"+value.controles_peso+"</td><td>"+value.controles_imc+"</td><td>"+value.controles_porc_grasa+"</td><td>"+value.porc_musculo+"</td><td>"+value.controles_porc_agua+"</td><td>"+value.controles_porc_grasa_visc+"</td><td>"+value.controles_edad_metab+"</td><td>"+value.controles_med_pecho+"</td><td>"+value.controles_circ_cintura+"</td><td>"+value.controles_med_cadera+"</td><td>"+value.controles_notas+"</td><td>"+value.controles_fecha+"</td><td><a href='f_modificar_controles.php?id_paciente="+value.pacientes_id+"&peso="+value.controles_peso+"&imc="+value.controles_imc+"&grasa="+value.controles_porc_grasa+"&musculo="+value.porc_musculo+"&agua="+value.controles_porc_agua+"&grasa_visceral="+value.controles_porc_grasa_visc+"&edad_meta="+value.controles_edad_metab+"&pecho="+value.controles_med_pecho+"&cintura="+value.controles_circ_cintura+"&cadera="+value.controles_med_cadera+"&nota="+value.controles_notas+"&fecha="+value.controles_fecha+"&id_control="+value.controles_id+"'>Modificar</a></td><td><input type='button' value='Eliminar' class='btn_eliminar'/></td></tr>";
+             });
             $("#result").html(table+tableValues);
+            $(".btn_eliminar").click(function() {
+                var $row = $(this).closest("tr"),
+                $id_control = $row.find("td:nth-child(1)");
+                
+                if(confirm("Presione OK para eliminar el control")){
+                    eliminar_control($id_control.text());
+                }
+                     
+            });
+                
+            }
+            
         });
         busqueda.error(function(error){
             alert("error");
