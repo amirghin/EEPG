@@ -28,6 +28,32 @@ class pacientes{
 			$this->mensaje = $e->GetMessage();
 
 		}
+	}
+
+		function buscar_paciente($nombre_paciente, $conexion){
+		try{
+			$query = "SELECT * FROM pacientes WHERE pacientes_nombre LIKE '%{$nombre_paciente}%'";
+			$resultado = mysqli_query($conexion, $query);
+			$array = array();
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}else{
+				while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+				}
+				return '{"pacientes":'.json_encode($array).'}';
+			}
+
+		}catch (Exception $e){
+			  return json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
 	}	
 
 }
