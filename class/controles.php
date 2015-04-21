@@ -140,7 +140,6 @@ public $idPaciente;
                     controles_notas = '{$notas}', 
                     controles_fecha = '{$fecha}'
                      where controles_id = {$control_id}";
-            echo $query;
             
             $resultado = mysqli_query($conexion, $query);
             if (!$resultado){
