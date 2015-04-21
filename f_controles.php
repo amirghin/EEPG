@@ -1,3 +1,36 @@
+<?php
+
+$mensaje = "";  
+require_once("class/conexion.php");
+include_once("class/controles.php");
+
+	//if( (isset($_POST['txtId'], $_POST['txtPeso'], $_POST['txtGrasa'], $_POST['txtMusculo'], $_POST['txtPorcentajeAgua'], $_POST['txtGrasaVisceral'], $_POST['txtPesoMeta'], , $_POST['txtEdadmetabolica'], $_POST['txtMedidaPecho'], $_POST['txtCircCintura'], $_POST['txtMedidaCadera'], $_POST['txtNotes'], $_POST['txtFecha'] )) ){
+		try{
+			$control_id = $_POST['txtId'];
+			$peso = $_POST['txtPeso'];
+			$grasa = $_POST['txtGrasa'];
+			$musculo = $_POST['txtMusculo'];
+			$porcentajeAgua = $_POST['txtPorcentajeAgua'];
+			$grasaVisceral = $_POST['txtGrasaVisceral'];
+			$pesoMeta = $_POST['txtPesoMeta'];
+			$edadMetabolica = $_POST['txtEdadmetabolica'];
+			$medidaPecho = $_POST['txtMedidaPecho'];
+			$circunferenciaCint = $_POST['txtCircCintura'];
+			$medidaCadera = $_POST['txtMedidaCadera'];
+			$notas = $_POST['txtNotes'];
+			$fecha = $_POST['txtFecha'];
+
+			echo $fecha;
+
+		}catch(Exception $e){
+				$mensaje = $e->GetMessage();
+		}
+
+	//}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +38,12 @@
 	<title>Nutrivital - Controles</title>
 
 	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 	<script src="js/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">	
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 </head>
 
 <body>
@@ -66,7 +102,7 @@
 					</tr>
 			    	<tr>
 						<td><label for="lblFecha">Fecha:</label></td>
-						<td><input type="text" name="txtFecha"></td>
+						<td><input type="text" name="txtFecha" class="fecha"></td>
 					</tr>
 			    	<tr>
 			    		<td class="center" colspan="2"><input name="controlesBtn" type="submit" value="Insertar"></td>

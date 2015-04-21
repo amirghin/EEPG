@@ -8,6 +8,7 @@ function busqueda_paciente(){
             data: {nombre_paciente:buscar}, //Datos que se envian al PHP por medio del POST
         });
         busqueda.done(function(response){
+            console.log(response);
             var object = jQuery.parseJSON(response);
             var table = "<tr><td>Id Paciente</td><td>Nombre</td><td>Apellido</td><td>Genero</td><td>Fecha Ingreso</td><td>Fecha nacimiento</td> <td>Talla</td><td>Peso Meta</td><td>Circunferencia de la muneca</td><td>Antecedentes personales</td> <td>Padecimientos familiares</td> <td>Nombre usuario</td>  <td>Modificar</td> <td>Eliminar</td></tr> ";
             var tableValues = "";
@@ -125,7 +126,9 @@ $(document).ready(function(){
 
 
 	$("#buscar_control").on("click", function(){
-		busqueda_Control();
+        //if(e.keyCode == 13) {
+		  busqueda_Control();
+        //}
 	})
 
     $('.buscar_control').keyup(function(e) {
@@ -153,5 +156,7 @@ $(document).ready(function(){
         verificar_existencia();
     });
 
+
+    $( ".fecha" ).datepicker();
 
 })
