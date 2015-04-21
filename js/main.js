@@ -83,9 +83,9 @@ function verificar_login(){
 
 }
 
-function verificar_existencia(){
+function verificar_existencia(username, c_form){
 
-    var username = $("#txtUser").val();
+    
     if( username != ""){
         var buscar_usuario = $.ajax({
         url: "busquedas/busqueda_usuario.php", // PHP que se ejecuta en el click del boton
@@ -103,7 +103,7 @@ function verificar_existencia(){
                
             }else if(object.usuario.existe == 0){
 
-                 $("#i_pacientes").submit();
+                 c_form.submit();
             }
 
         });
@@ -154,7 +154,7 @@ $(document).ready(function(){
     });
 
     $("#i_pacientesBtn").on("click", function(){
-        verificar_existencia();
+        verificar_existencia($("#i_txtUser").val(), $("#i_pacientes"));
     });
 
 
