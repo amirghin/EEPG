@@ -1,5 +1,6 @@
 function busqueda_paciente(){
     var buscar = $("#nombre_paciente").val();
+    console.log(buscar);
 
     if (buscar!=""){
         var busqueda = $.ajax({

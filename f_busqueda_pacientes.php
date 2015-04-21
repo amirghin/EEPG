@@ -17,7 +17,7 @@
 				<table>
 			    	<tr>
 				    	<td><label for="lblId">Nombre Paciente: </label></td>
-				    	<td><input type="text" name="nombre_paciente"></td>
+				    	<td><input type="text" name="nombre_paciente" id="nombre_paciente"></td>
 			    	</tr>
 			    	<tr>
 			    		<td class="center" colspan="2">
