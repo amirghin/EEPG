@@ -59,9 +59,13 @@ function busqueda_paciente(){
                     var $row = $(this).closest("tr"),
                     $id_paciente = $row.find("td:nth-child(1)");
                     $nom_usuario = $row.find("td:nth-child(12)");
-                    eliminar_usuario($nom_usuario.text());
-/*                    alert($id_paciente.text());
-                    alert($nom_usuario.text());*/
+                    
+
+                    if(confirm("Presione OK para eliminar el usuario")){
+                        eliminar_usuario($nom_usuario.text());
+                    }
+                    
+                    
                 });
             }
             
