@@ -72,7 +72,7 @@ public $idPaciente;
 		function buscar_control($id_paciente, $conexion){
 		try{
 			
-			$query = "SELECT * FROM controles WHERE pacientes_id LIKE %{$id_paciente}%";
+			$query = "SELECT * FROM controles WHERE pacientes_id = {$id_paciente}";
 			$resultado = mysqli_query($conexion, $query);
 			$array = array();
 			if(!$resultado){
