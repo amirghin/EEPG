@@ -1,6 +1,6 @@
 function busqueda_paciente(){
     var buscar = $("#nombre_paciente").val();
-    console.log(buscar);
+    
 
     if (buscar!=""){
         var busqueda = $.ajax({
@@ -18,9 +18,16 @@ function busqueda_paciente(){
                 var table = "<tr><td>Id Paciente</td><td>Nombre</td><td>Apellido</td><td>Genero</td><td>Fecha Ingreso</td><td>Fecha nacimiento</td> <td>Talla</td><td>Peso Meta</td><td>Circunferencia de la muneca</td><td>Antecedentes personales</td> <td>Padecimientos familiares</td> <td>Nombre usuario</td>  <td>Eliminar</td> <td>Modificar</td></tr> ";
                 var tableValues = "";
                 $.each(object.pacientes, function(key,value){  // funcion para recorrer el objeto JSON parseado
-                    tableValues += "<tr><td>"+value.pacientes_id+"</td><td>"+value.pacientes_nombre+"</td><td>"+value.pacientes_apellidos+"</td><td>"+value.pacientes_genero+"</td> <td>"+value.pacientes_fecha+"</td> <td>"+value.pacientes_fecha_nac+"</td> <td>"+value.pacientes_talla+"</td> <td>"+value.pacientes_peso_meta+"</td> <td>"+value.pacientes_circ_muneca+"</td> <td>"+value.pacientes_ant_personales+"</td> <td>"+value.pacientes_padec_familiares+"</td><td>"+value.usuarios_nombre+"</td><td> <input type='button' value='Eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td><td><input type='hidden' value="+ value.pacientes_id+"></td></tr>";
+                    tableValues += "<tr><td>"+value.pacientes_id+"</td><td>"+value.pacientes_nombre+"</td><td>"+value.pacientes_apellidos+"</td><td>"+value.pacientes_genero+"</td> <td>"+value.pacientes_fecha+"</td> <td>"+value.pacientes_fecha_nac+"</td> <td>"+value.pacientes_talla+"</td> <td>"+value.pacientes_peso_meta+"</td> <td>"+value.pacientes_circ_muneca+"</td> <td>"+value.pacientes_ant_personales+"</td> <td>"+value.pacientes_padec_familiares+"</td><td>"+value.usuarios_nombre+"</td><td> <input type='button' value='Eliminar' class='btn_eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td><td><input type='hidden' value="+ value.pacientes_id+"></td></tr>";
                 });
                 $("#result").html(table+tableValues);
+                
+                $(".btn_eliminar").click(function() {
+                        var $row = $(this).closest("tr"),
+                        $tds = $row.find("td:nth-child(3)");
+                        alert($tds.text());
+                });
+
             }
             
         });
