@@ -6,7 +6,7 @@
 
 
 	$id_paciente = $_POST["id_paciente"];
-	$query = "SELECT * FROM controles WHERE pacientes_id LIKE {$id_paciente}";
+	$query = "SELECT * FROM controles WHERE pacientes_id LIKE %{$id_paciente}%";
 	$resultado = mysqli_query($conexion, $query);
 
 	$array = array();
