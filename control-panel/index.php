@@ -12,7 +12,7 @@ if(isset($_POST["aut_user"], $_POST["user_rol"])){
 
 	$_SESSION["active_user"] = $_POST["aut_user"];
 	$_SESSION["active_user_rol"] = $_POST["user_rol"];
-	header ("Location: f_controles.php");
+	header ("Location: dashboard.php");
 }
 
 ?>
