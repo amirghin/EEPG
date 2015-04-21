@@ -2,6 +2,7 @@
 
 $mensaje = "";
 if( $_GET["txtId"] == "" || $_GET["txtPeso"] == ""|| $_GET["txtGrasa"] == ""||$_GET["txtImc"] == ""|| $_GET["txtMusculo"]== ""|| $_GET["txtPorcentajeAgua"]== ""|| $_GET["txtGrasaVisceral"]== ""||$_GET["txtEdadmetabolica"]== ""|| $_GET["txtMedidaPecho"]== ""|| $_GET["txtCircCintura"]== ""||$_GET["txtMedidaCadera"]== ""|| $_GET["txtNotes"]== ""|| $_GET["txtFecha"]== ""|| $_GET["txtIdPaciente"]== "" ){
+    echo "en blanco";
     $id_control = $_GET["id_control"];
     $id_paciente = $_GET["id_paciente"];
     $peso = $_GET["peso"];
@@ -18,6 +19,7 @@ if( $_GET["txtId"] == "" || $_GET["txtPeso"] == ""|| $_GET["txtGrasa"] == ""||$_
     $fecha=$_GET["fecha"];
 }else
 {
+        echo "no en blanco";
     $id_control = $_GET["txtId"];
     $id_paciente = $_GET["txtIdPaciente"];
     $peso = $_GET["txtPeso"];
@@ -39,8 +41,6 @@ require "class/conexion.php";
 require "class/controles.php";
 
 try{
-    
-    
     $control = new controles;
     $control->modificar_control($_GET["txtId"], $_GET["txtPeso"], $_GET["txtGrasa"], $_GET["txtImc"], $_GET["txtMusculo"],          $_GET["txtPorcentajeAgua"], $_GET["txtGrasaVisceral"], $_GET["txtEdadmetabolica"], $_GET["txtMedidaPecho"], $_GET["txtCircCintura"], $_GET["txtMedidaCadera"], $_GET["txtNotes"], $_GET["txtFecha"], $_GET["txtIdPaciente"], $conexion);
     
@@ -82,7 +82,7 @@ try{
 				<table>
 			    	<tr>
 			    		<td><label for="lblId">Id: </label></td></td>
-			    		<td><input type="text" name="txtId" value="<?php echo $id_paciente?>"></td>
+			    		<td><input type="text" name="txtId" value="<?php echo $id_paciente?>" readonly></td>
 			    	</tr>
 			    	<tr>
 				    	<td><label for="lblPeso">Peso: </label></td>
@@ -134,7 +134,7 @@ try{
 					</tr>
 			    	<tr>
 						<td><label for="lblFecha">Id del paciente:</label></td>
-						<td><input type="text" name="txtIdPaciente" value="<?php echo $id_paciente?>" disabled></td>
+						<td><input type="text" name="txtIdPaciente" value="<?php echo $id_paciente?>" readonly></td>
 					</tr>
 			    	<tr>
 			    		<td class="center" colspan="2"><input name="controlesBtn" type="submit" value="Insertar"></td>
