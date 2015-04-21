@@ -2,7 +2,6 @@
 
 $mensaje = "";
 if( $_GET["txtId"] == "" || $_GET["txtPeso"] == ""|| $_GET["txtGrasa"] == ""||$_GET["txtImc"] == ""|| $_GET["txtMusculo"]== ""|| $_GET["txtPorcentajeAgua"]== ""|| $_GET["txtGrasaVisceral"]== ""||$_GET["txtEdadmetabolica"]== ""|| $_GET["txtMedidaPecho"]== ""|| $_GET["txtCircCintura"]== ""||$_GET["txtMedidaCadera"]== ""|| $_GET["txtNotes"]== ""|| $_GET["txtFecha"]== ""|| $_GET["txtIdPaciente"]== "" ){
-    echo "en blanco";
     $id_control = $_GET["id_control"];
     $id_paciente = $_GET["id_paciente"];
     $peso = $_GET["peso"];
@@ -19,7 +18,6 @@ if( $_GET["txtId"] == "" || $_GET["txtPeso"] == ""|| $_GET["txtGrasa"] == ""||$_
     $fecha=$_GET["fecha"];
 }else
 {
-        echo "no en blanco";
     $id_control = $_GET["txtId"];
     $id_paciente = $_GET["txtIdPaciente"];
     $peso = $_GET["txtPeso"];
@@ -34,9 +32,7 @@ if( $_GET["txtId"] == "" || $_GET["txtPeso"] == ""|| $_GET["txtGrasa"] == ""||$_
     $cadera=$_GET["txtMedidaCadera"];
     $nota=$_GET["txtNotes"];
     $fecha=$_GET["txtFecha"]; 
- 
-}
-
+    
 require "class/conexion.php";
 require "class/controles.php";
 
@@ -53,6 +49,10 @@ try{
 }catch(Exception $e){
     $mensaje = $e->GetMessage();
 }
+ 
+}
+
+
 
 //print_r($_GET);
 
