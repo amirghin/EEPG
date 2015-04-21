@@ -39,6 +39,10 @@ class pacientes{
 			if(!$resultado){
 
 				throw new Exception(mysqli_error($resultado));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+
+				throw new Exception("No se encontraron registros para el usuario: {$nombre_paciente}", 1);
+				
 			}else{
 				while($row=mysqli_fetch_assoc($resultado)){
 				$array[] = $row;
