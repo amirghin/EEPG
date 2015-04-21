@@ -7,13 +7,13 @@ require "class/pacientes.php";
 $usuario = new usuarios;
 $paciente = new pacientes;
 
-if(isset($_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail'])){
-	$insertar_usuario = $usuario->insertar_usuario($conexion, $_POST['txtUser'], $_POST['txtPass'], $_POST['txtEmail']);
+if(isset($_POST['i_txtUser'], $_POST['i_txtPass'], $_POST['i_txtEmail'])){
+	$insertar_usuario = $usuario->insertar_usuario($conexion, $_POST['i_txtUser'], $_POST['i_txtPass'], $_POST['i_txtEmail']);
 	if($insertar_usuario){
 
-		$insertar_paciente = $paciente->insertar_paciente($conexion, $_POST['txtNombre'], $_POST['txtApellido'], $_POST['selectGenero'],
-								$_POST['txtFechaNacimiento'],$_POST['txtTalla'], $_POST['txtPesoMeta'], $_POST['txtCircMuneca'],
-								$_POST['txtAntecedentes'], $_POST['txtPadecimientos'], $_POST['txtUser']);
+		$insertar_paciente = $paciente->insertar_paciente($conexion, $_POST['i_txtNombre'], $_POST['i_txtApellido'], $_POST['i_selectGenero'],
+								$_POST['i_txtFechaNacimiento'],$_POST['i_txtTalla'], $_POST['i_txtPesoMeta'], $_POST['i_txtCircMuneca'],
+								$_POST['i_txtAntecedentes'], $_POST['i_txtPadecimientos'], $_POST['i_txtUser']);
 	}
 }
 
@@ -57,16 +57,16 @@ echo $paciente->mensaje;
 						<table>
 					    	<tr>
 						    	<td><label for="lblNombre">Nombre: </label></td>
-						    	<td><input type="text" name="txtNombre"></td>
+						    	<td><input type="text" name="i_txtNombre" id="i_txtNombre"></td>
 					    	</tr>
 						    <tr>
 								<td><label for="lblApellidos">Apellidos:</label></td>
-								<td><input type="text" name="txtApellido"></td>
+								<td><input type="text" name="i_txtApellido" id="i_txtApellido"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblFecha">Género</label></td>
 								<td>
-									<select name="selectGenero">
+									<select name="i_selectGenero" id="i_selectGenero">
 										<option disabled selected> -- Seleccione un género -- </option>
 										<option value="m">Masculino</option>
 										<option value="f">Femenino</option>
@@ -75,27 +75,27 @@ echo $paciente->mensaje;
 					    	</tr>
 					    	<tr>
 								<td><label for="lblFechaNacimiento">Fecha Nacimiento:</label></td>
-								<td><input type="date" name="txtFechaNacimiento"></td>
+								<td><input type="date" name="i_txtFechaNacimiento" id="i_txtFechaNacimiento"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lbltalla">Talla (cm):</label></td>
-								<td><input type="number" name="txtTalla" min="0" step="any"></td>
+								<td><input type="number" name="i_txtTalla" id="i_txtTalla" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblPeso">Peso Meta (kg):</label></td>
-								<td><input type="number" name="txtPesoMeta" min="0" step="any"></td>
+								<td><input type="number" name="i_txtPesoMeta" id="i_txtPesoMeta" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblCircMuneca">Circunferencia Muñeca (cm):</label></td>
-								<td><input type="number" name="txtCircMuneca" min="0" step="any"></td>
+								<td><input type="number" name="i_txtCircMuneca" id="i_txtCircMuneca" min="0" step="any"></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblAntecendetes">Antecedentes Personales:</label></td>
-								<td><textarea name="txtAntecedentes"></textarea></td>
+								<td><textarea name="i_txtAntecedentes" id="i_txtAntecedentes"></textarea></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblPadecimientos">Padecimientos Familiares:</label></td>
-								<td><textarea name="txtPadecimientos"></textarea></td>
+								<td><textarea name="i_txtPadecimientos" id="i_txtPadecimientos"></textarea></td>
 					    	</tr>
 					    	<tr>
 					    		<td class="center" colspan="2"><a class="nextTab" href="javascript:void(0);">Tab Usuario</a></td>
@@ -110,15 +110,15 @@ echo $paciente->mensaje;
 						<table>
 					    	<tr>
 						    	<td><label for="lblUser">Usuario: </label></td>
-						    	<td><input type="text" name="txtUser" id="txtUser" required></td>
+						    	<td><input type="text" name="i_txtUser" id="i_txtUser" required></td>
 					    	</tr>
 					    	<tr>
 						    	<td><label for="lblPass">Password: </label></td>
-						    	<td><input type="text" name="txtPass" required></td>
+						    	<td><input type="text" name="i_txtPass" id="i_txtPass" required></td>
 					    	</tr>
 					    	<tr>
 								<td><label for="lblEmail">Email:</label></td>
-								<td><input type="email" name="txtEmail"></td>
+								<td><input type="email" name="i_txtEmail" id="i_txtEmail"></td>
 					    	</tr>
 					    	<tr>
 					    		<td class="center" colspan="2"><input name="i_pacientesBtn" id="i_pacientesBtn" type="button" value="Insertar"></td>
