@@ -69,6 +69,33 @@ public $idPaciente;
 		}
 	}
 
+		function buscar_control($id_paciente, $conexion){
+		try{
+			
+			$query = "SELECT * FROM controles WHERE pacientes_id LIKE %{$id_paciente}%";
+			$resultado = mysqli_query($conexion, $query);
+			$array = array();
+			if(!$resultado){
+				throw new Exception(mysqli_error($resultado));	
+			}else{
+				while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+
+				}
+				return 	'{"controles":'.json_encode($array).'}';
+
+			}
+
+		}catch (Exception $e){
+			  return json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode()
+			  	)
+			  ));
+		}
+	}	
+
 }
 
 ?>
