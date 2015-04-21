@@ -43,7 +43,7 @@ function busqueda_Control(){
             var tableValues = "";
             $.each(object.controles, function(key,value){
 
-                tableValues += "<tr><td>"+value.controles_peso+"</td><td>"+value.controles_imc+"</td><td>"+value.controles_porc_grasa+"</td><td>"+value.porc_musculo+"</td><td>"+value.controles_porc_agua+"</td><td>"+value.controles_porc_grasa_visc+"</td><td>"+value.controles_edad_metab+"</td><td>"+value.controles_med_pecho+"</td><td>"+value.controles_circ_cintura+"</td><td>"+value.controles_med_cadera+"</td><td>"+value.controles_notas+"</td><td>"+value.controles_fecha+"</td><td><input type='button' value='Modificar'/></td><td><input type='button' value='Eliminar'/></td></tr>";
+                tableValues += "<tr><td>"+value.controles_peso+"</td><td>"+value.controles_imc+"</td><td>"+value.controles_porc_grasa+"</td><td>"+value.porc_musculo+"</td><td>"+value.controles_porc_agua+"</td><td>"+value.controles_porc_grasa_visc+"</td><td>"+value.controles_edad_metab+"</td><td>"+value.controles_med_pecho+"</td><td>"+value.controles_circ_cintura+"</td><td>"+value.controles_med_cadera+"</td><td>"+value.controles_notas+"</td><td>"+value.controles_fecha+"</td><td><a href='f_modificar_controles.php?id_paciente="+value.pacientes_id+"&peso="+value.controles_peso+"'>Modificar</a></td><td><input type='button' value='Eliminar'/></td></tr>";
             });
             $("#result").html(table+tableValues);
         });

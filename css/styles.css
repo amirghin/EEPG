@@ -109,11 +109,11 @@ body{
 	color: #000;
 }
 
-.busqueda_pacientes{
+.busqueda_pacientes, .busqueda_control{
 	width: 90%;
 }
 
-.Pacientes{
+.Pacientes, .Control{
   width: 40%;
   margin: 0 auto 11px;
 }
