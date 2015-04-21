@@ -75,7 +75,7 @@ public $idPaciente;
 			$query = "SELECT * FROM controles WHERE pacientes_id = {$id_paciente}";
 			$resultado = mysqli_query($conexion, $query);
 			$array = array();
-			if(!$resultado){
+			if(!$resultado)  {
 				throw new Exception(mysqli_error($resultado));	
 			}else{
 				while($row=mysqli_fetch_assoc($resultado)){
@@ -123,9 +123,9 @@ public $idPaciente;
 
 	}	
     
-    function modificar_control($control_id, $peso, $grasa, $imc, $musculo, $porcentajeAgua, $grasaVisceral, $edadMetabolica, $medidaPecho, $circunferenciaCint, $medidaCadera, $notas, $fecha, $idPaciente, $conexion){
+ function modificar_control($control_id, $peso, $grasa, $imc, $musculo, $porcentajeAgua, $grasaVisceral, $edadMetabolica, $medidaPecho, $circunferenciaCint, $medidaCadera, $notas, $fecha, $idPaciente, $conexion){
         $mensaje = "";
-        try{
+        try{            
             $query = "update controles set
                     controles_peso = {$peso}, 
                     controles_imc = {$imc}, 
@@ -138,17 +138,15 @@ public $idPaciente;
                     controles_circ_cintura = {$circunferenciaCint}, 
                     controles_med_cadera = '{$medidaCadera}', 
                     controles_notas = '{$notas}', 
-                    controles_fecha = '{$fecha}', 
+                    controles_fecha = '{$fecha}'
                      where controles_id = {$control_id}";
-            echo $query;
             
             $resultado = mysqli_query($conexion, $query);
-            if (!$resultado)
-            {
-             throw new Exception(mysql_error()); 
+            if (!$resultado){
+             throw new Exception(mysqli_error($conexion)); 
             }
-            $this->mensaje = 'El registro se actualizó correctamente';
-            return $resultado;
+                $this->mensaje = 'El registro se actualizó correctamente';
+                return $resultado;
           }catch(Exception $e){
              throw new Exception($e->getMessage());
 
@@ -157,6 +155,9 @@ public $idPaciente;
 
     
     }
+
+
+
 
 }
 

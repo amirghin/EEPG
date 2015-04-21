@@ -33,10 +33,6 @@
 								</tr>
 							</table>
 						</fieldset>
-
-					<table id="result">
-						
-					</table>
 				</section>
 				
 				<table id="result" class="tableResult">
