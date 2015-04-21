@@ -115,5 +115,33 @@ class usuarios{
 
 	}
 
+
+	function eliminar_usuario($usuario, $conexion) {
+
+		try{
+			$query = "DELETE FROM usuarios WHERE usuarios_nombre='{$usuario}'";
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}else{
+				return '{"delete":"true"}';
+			}
+				
+			
+
+		}catch (Exception $e){
+			  return json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+
+
+	}
+
 }
 ?>
