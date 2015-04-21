@@ -13,8 +13,6 @@ class pacientes{
 			           VALUES ('{$nombre}', '{$apellido}', '{$genero}', CURDATE(),
 			           			'{$fec_nacimiento}', {$talla}, {$peso_meta}, {$circ_muneca},
 			           			'{$antecedentes}', '{$padecimientos}', '{$usuario}')";
-
-			echo $insert;
 			
 			$resultado = mysqli_query($conexion, $insert);
 
