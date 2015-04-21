@@ -116,3 +116,5 @@ GRANT SELECT ON nutrivital.* TO sys_nutrivital@localhost;
 GRANT INSERT ON nutrivital.* TO sys_nutrivital@localhost;
 GRANT UPDATE ON nutrivital.* TO sys_nutrivital@localhost;
 FLUSH PRIVILEGES;
+
+select * from controles;
