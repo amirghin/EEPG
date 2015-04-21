@@ -1,3 +1,37 @@
+function eliminar_usuario(usuario){
+
+    if(usuario!=""){
+
+        var eliminar = $.ajax({
+
+            url: "eliminar_usuario.php",
+            type: "POST",
+            data: {usuario:usuario},
+
+        });
+
+        eliminar.done(function(response){
+
+            console.log(response);
+            var object = jQuery.parseJSON(response);
+
+                if(object.error){
+                    alert(object.error.msg);
+                }else{
+                
+                alert("Se elimino el usuario " + usuario + " y todos sus registros relacionados");
+            }
+
+
+        });
+
+        eliminar.error(function(error){
+            alert("error");
+        });
+    }
+
+}
+
 function busqueda_paciente(){
     var buscar = $("#nombre_paciente").val();
     console.log(buscar);
@@ -25,8 +59,9 @@ function busqueda_paciente(){
                     var $row = $(this).closest("tr"),
                     $id_paciente = $row.find("td:nth-child(1)");
                     $nom_usuario = $row.find("td:nth-child(12)");
-                    alert($id_paciente.text());
-                    alert($nom_usuario.text());
+                    eliminar_usuario($nom_usuario.text());
+/*                    alert($id_paciente.text());
+                    alert($nom_usuario.text());*/
                 });
             }
             
